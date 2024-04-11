@@ -18,7 +18,7 @@ connection.once('open', () => {
     console.log('MongoDB database connection established successfully')
 }).on('error', function(err) { console.log('Error', err) })
 const uri = process.env.ATLAS_URI
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 
