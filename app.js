@@ -4,7 +4,11 @@ require('dotenv').config()
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://hotel-ms-new.onrender.com'
+};
+
+app.use(cors(corsOptions));
 
 const port = process.env.PORT || 5000
 
