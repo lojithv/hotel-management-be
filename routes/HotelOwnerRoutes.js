@@ -1,6 +1,6 @@
 module.exports = function(app) {
     const { Auth } = require("../middleware/auth");
-    const { HotelOwner } = require("../middleware/hotelOwner");
+    const { HotelOwner } = require("../middleware/HotelOwner");
 
     const HotelOwnerController = require("../controllers/HotelOwnerController");
 
