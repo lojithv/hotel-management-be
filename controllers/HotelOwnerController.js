@@ -5,7 +5,7 @@ const { Booking } = require("../models/BookingModel");
 // need to add hotel owner id into booking
 
 exports.getBookings = async(req, res) => {
-    await Booking.find({ 'hotelOwner_id': req.params.id }, async function(err, booking) {
+    Booking.find({ 'hotelOwner_id': req.params.id }, async function(err, booking) {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -29,7 +29,7 @@ exports.getBookings = async(req, res) => {
 };
 
 exports.getHotels = async(req, res) => {
-    await Hotel.find({ 'hotelOwner_id': req.params.id }, async function(err, hotel) {
+    Hotel.find({ 'hotelOwner_id': req.params.id }, async function(err, hotel) {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -53,7 +53,7 @@ exports.getHotels = async(req, res) => {
 };
 
 exports.updateHotel = async(req, res) => {
-    await Hotel.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, function(err, hotel) {
+    Hotel.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, function(err, hotel) {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -79,7 +79,7 @@ exports.updateHotel = async(req, res) => {
 exports.addHotel = async(req, res) => {
     let newHotel = new Hotel(req.body);
 
-    await newHotel.save((err, hotel) => {
+    newHotel.save((err, hotel) => {
         if (err) {
             return res.status(422).json({
                 success: false,

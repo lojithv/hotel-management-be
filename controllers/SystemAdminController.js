@@ -7,7 +7,7 @@ const { Hotel } = require("../models/HotelModel");
 exports.addTown = async(req, res) => {
     let newTown = new Town(req.body);
 
-    await newTown.save((err, town) => {
+    newTown.save((err, town) => {
         try {
             if (err) {
                 return res.status(422).json({
@@ -29,7 +29,7 @@ exports.addTown = async(req, res) => {
 };
 
 exports.getCustomers = async(req, res) => {
-    await User.find({ "userType": `${req.query.userType}` }, async function(err, user) {
+    User.find({ "userType": `${req.query.userType}` }, async function(err, user) {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -53,7 +53,7 @@ exports.getCustomers = async(req, res) => {
 };
 
 exports.getHotelOwners = async(req, res) => {
-    await User.find({ "userType": `${req.query.userType}` }, async function(err, user) {
+    User.find({ "userType": `${req.query.userType}` }, async function(err, user) {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -77,7 +77,7 @@ exports.getHotelOwners = async(req, res) => {
 };
 
 exports.getBookings = async(req, res) => {
-    await Booking.find(function(err, bookings) {
+    Booking.find(function(err, bookings) {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -95,7 +95,7 @@ exports.getBookings = async(req, res) => {
 };
 
 exports.getHotels = async(req, res) => {
-    await Hotel.find({ "city": `${req.query.city}` }, async function(err, hotels) {
+    Hotel.find({ "city": `${req.query.city}` }, async function(err, hotels) {
         // console.log(`${req.query.city}`);
         if (err) {
             return res.status(422).json({

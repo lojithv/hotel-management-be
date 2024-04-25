@@ -24,7 +24,7 @@ exports.getTowns = async(req, res) => {
 
 //req.params.city
 exports.getHotels = async(req, res) => {
-    await Hotel.find({ "city": `${req.query.city}` }, async function(err, hotels) {
+    Hotel.find({ "city": `${req.query.city}` }, async function(err, hotels) {
         // console.log(`${req.query.city}`);
         if (err) {
             return res.status(422).json({
@@ -67,7 +67,7 @@ exports.getHotels = async(req, res) => {
 exports.addBooking = async(req, res) => {
     let newBooking = new Booking(req.body);
 
-    await newBooking.save((err, booking) => {
+    newBooking.save((err, booking) => {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -87,7 +87,7 @@ exports.addBooking = async(req, res) => {
 exports.makePayment = async(req, res) => {
     let newPayment = new Payment(req.body);
 
-    await newPayment.save((err, payment) => {
+    newPayment.save((err, payment) => {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -105,7 +105,7 @@ exports.makePayment = async(req, res) => {
 };
 
 exports.getBookings = async(req, res) => {
-    await Booking.find({ "customer_id": `${req.query.id}` }, async function(err, booking) {
+    Booking.find({ "customer_id": `${req.query.id}` }, async function(err, booking) {
         if (err) {
             return res.status(422).json({
                 success: false,
@@ -129,7 +129,7 @@ exports.getBookings = async(req, res) => {
 };
 
 exports.deleteBookings = async(req, res) => {
-    await Booking.deleteOne({ _id: req.params.id }, function(err, booking) {
+    Booking.deleteOne({ _id: req.params.id }, function(err, booking) {
         if (err) {
             return res.status(422).json({
                 success: false,

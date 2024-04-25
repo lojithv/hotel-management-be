@@ -4,7 +4,7 @@ exports.registerUser = async(req, res) => {
     console.log("register",req.body)
     const user = new User(req.body);
 
-    await user.save((err, doc) => {
+    user.save((err, doc) => {
         if (err) {
             return res.status(422).json({
                 success: false,
