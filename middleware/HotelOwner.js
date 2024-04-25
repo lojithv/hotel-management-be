@@ -13,8 +13,13 @@ const HotelOwner = (req, res, next) => {
             if (err) throw err;
 
             console.log(user);
-            if (user.userType !== UserRole.HOTEL_OWNER) {
-                res.status(403).json({
+            if (user && user?.userType !== UserRole.HOTEL_OWNER) {
+               return res.status(403).json({
+                    success: false,
+                    message: "No authorization to access this route!"
+                });
+            } else if( user === null){
+               return res.status(403).json({
                     success: false,
                     message: "No authorization to access this route!"
                 });

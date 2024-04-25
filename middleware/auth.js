@@ -12,7 +12,7 @@ const Auth = (req, res, next) => {
             if (err) throw err;
 
             if (!user) {
-                res.status(400).json({
+               return res.status(400).json({
                     success: false,
                     message: "No valid token provided!"
                 });
@@ -24,7 +24,7 @@ const Auth = (req, res, next) => {
             next();
         });
     } else {
-        res.status(400).json({
+       return res.status(400).json({
             success: false,
             message: "No valid token provided!"
         });
