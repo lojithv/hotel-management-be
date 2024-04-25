@@ -5,7 +5,7 @@ const { Hotel } = require("../models/HotelModel");
 
 
 exports.getTowns = async(req, res) => {
-    await Town.find(function(err, towns) {
+    Town.find({}, async function(err, towns) {
         if (err) {
             return res.status(422).json({
                 success: false,
